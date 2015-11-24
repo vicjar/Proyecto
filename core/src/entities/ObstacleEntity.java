@@ -26,11 +26,10 @@ public class ObstacleEntity extends Actor{
 	
 	BodyDef def = new BodyDef();
 	def.position.set(x, y-1.5f);
-//	def.type = BodyDef.BodyType.DynamicBody;
 	body = world.createBody(def);
 	
 	PolygonShape box = new PolygonShape();
-	box.setAsBox(0.5f, .5f);
+	box.setAsBox(.5f/PIXELS_IN_METER, .5f/PIXELS_IN_METER);//tamano de la caja "parte fisica"
 	fixture = body.createFixture(box, 1);
 	fixture.setUserData("obstacle");
 	box.dispose();
@@ -41,7 +40,7 @@ public class ObstacleEntity extends Actor{
 	}
 	public void draw(Batch batch, float parentAlpha) {
 		setPosition((body.getPosition().x+0.5f)*PIXELS_IN_METER, 
-					(body.getPosition().y+.5f)*PIXELS_IN_METER);
+					(body.getPosition().y+.5f)*PIXELS_IN_METER*.5f);
 		batch.draw(texture, getX(), getY(), getWidth(), getHeight());
 	
 	}

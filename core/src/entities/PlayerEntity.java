@@ -46,7 +46,7 @@ public class PlayerEntity extends Actor {
 	@Override
 	public void act(float delta){
 		//saltar si se toca la pantalla
-		if(Gdx.input.justTouched() || mustJump){
+		if((Gdx.input.justTouched() || mustJump) && alive){
 			mustJump=false;
 			jump();
 		}
@@ -57,6 +57,7 @@ public class PlayerEntity extends Actor {
 		}
 
 	}
+	
 	public void jump(){
 		if(!jumping){
 			jumping=true;
